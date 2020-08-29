@@ -1,0 +1,98 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../aper-toolbar/aper-toolbar.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-input/all-imports.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-card/paper-card.html">
+
+<dom-module id="challenge-componente">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    aper-toolbar{
+background: rgb(57, 214, 57);
+color: black;
+width: 60%;
+height: 1000px;
+    }
+    paper-input{
+      color:white;
+         width:60%;
+         padding: 3px;
+         border-top: 0px;
+         border-right: 0px;
+         border-bottom: 1px solid white;
+         border-left: 0px"
+    }
+    </style>
+    <div align="center"><img src="./pictures/ico-logo.png" alt="Ironbit" width="50" height="50" ></div>
+    <h1 align="center"><strong>Frontend Test</strong> </h1>
+    <br/>
+    <br/>
+    <br/>
+
+  <paper-input placeholder="Agregar una nueva tarea"></paper-input>
+  <div align="center"><input class="btn btn-primary" type ="submit"value="Agregar" style="display:inline; background:rgb(30, 136, 168); color: white;"></div>
+  </div>
+  <br/>
+      <table style="margin: 0 auto;background:rgb(255, 222, 222);">
+        <tr>
+          <th width="800" height="50" style="background:rgb(169, 231, 53)">ToDo List by Ironbit<paper-icon-button src="./pictures/recycle-bin.svg"></paper-icon-button></th>
+          <th style="background:rgb(169, 231, 53)"></th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let todo of todos">
+          <div *ngIf="todos.length<1" style="background-color:white; width:400; text-align:center">No hay ToDo's, ¡Tòmate un cafè!</div>
+          <td>{{todo.description}}<paper-icon-button src="./pictures/remove.svg"></paper-icon-button><p align="rigth"></p></td>
+          <td><paper-icon-boton on click="deleteTodo(todo)" img class="trash"></paper-icon-button></td>
+      </table>
+    </form>
+      <div class="list-group">
+      <div class="list-group-item" style="background-color:Transparent" color:#CC0000 *ngFor="let todo of todos" (click)="todo.isDone = !todo.isDone">
+      </div>
+  </div>
+  </div>
+
+</template>
+
+  <script>
+    /**
+     * `challenge-componente`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ChallengeComponente extends Polymer.Element {
+      static get is() { return 'challenge-componente'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'challenge-componente'
+          },
+          description:{
+            type: String,
+          },
+          isDone:Boolean,
+        };
+      }
+      todo(){
+        description,
+        isDone
+      }
+      todos=this.todo;
+     addNewTodo() { //mètodo para agregar los todos
+    this.todos.push({ //hace push a nuestro arraw de todos
+      description: this.description, //ingresar un  nuevo objeto
+      isDone: false
+    });
+  }
+}
+    window.customElements.define(ChallengeComponente.is, ChallengeComponente);
+  </script>
+</dom-module>

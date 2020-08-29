@@ -1,0 +1,21 @@
+{
+  "name": "challenge-componente",
+  "main": "challenge-componente.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "paper-toolbar": "https://github.com/PolymerElements/paper-toolbar.git#v2.0.0",
+    "paper-button": "https://github.com/PolymerElements/paper-button.git#v2.0.0",
+    "paper-icon-button": "https://github.com/PolymerElements/paper-icon-button.git#v2.0.0",
+    "paper-input": "https://github.com/PolymerElements/paper-input.git#v2.0.0",
+    "paper-listbox": "https://github.com/PolymerElements/paper-listbox.git#v2.0.0",
+    "paper-card": "https://github.com/PolymerElements/paper-card.git#v2.0.0"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  }
+}
