@@ -34,28 +34,25 @@ height: 1000px;
     <br/>
     <br/>
 
-  <paper-input placeholder="Agregar una nueva tarea"></paper-input>
-  <div align="center"><input class="btn btn-primary" type ="submit"value="Agregar" style="display:inline; background:rgb(30, 136, 168); color: white;"></div>
-  </div>
-  <br/>
-      <table style="margin: 0 auto;background:rgb(255, 222, 222);">
-        <tr>
-          <th width="800" height="50" style="background:rgb(169, 231, 53)">ToDo List by Ironbit<paper-icon-button src="./pictures/recycle-bin.svg"></paper-icon-button></th>
-          <th style="background:rgb(169, 231, 53)"></th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let todo of todos">
-          <div *ngIf="todos.length<1" style="background-color:white; width:400; text-align:center">No hay ToDo's, ¡Tòmate un cafè!</div>
-          <td>{{todo.description}}<paper-icon-button src="./pictures/remove.svg"></paper-icon-button><p align="rigth"></p></td>
-          <td><paper-icon-boton on click="deleteTodo(todo)" img class="trash"></paper-icon-button></td>
-      </table>
-    </form>
-      <div class="list-group">
-      <div class="list-group-item" style="background-color:Transparent" color:#CC0000 *ngFor="let todo of todos" (click)="todo.isDone = !todo.isDone">
-      </div>
-  </div>
-  </div>
+<div id="form">
+  <paper-input placeholder="Agregar una nueva tarea" type="text" value="{{valor1}}" id=inputValor class="todo-input"></paper-input>
+  <paper-button on-click="algo" class="todo-btn" type="submit" style="display:inline; background:rgb(30, 136, 168); color: white;">"Agregar"</paper-button>
+</div>
+<div class="encab">
+<p width="800" height="50" style="background:rgb(169, 231, 53)"></p>>ToDo List by Ironbit</p><paper-icon-button src="./pictures/recycle-bin.svg"></paper-icon-button>
+</div>
 
+<div class="todo-container">
+  <template is="dom-repeat" items="{{collection}}" as="code">
+      <div class="todo-list">
+        {{code.descripcion}}
+        <button class="todo-remove-btn" on-click="borrar">
+          <img src="img/remove.svg" style="width: 28px;" class="trash-btn" id="remove">
+        </button>
+      </div>
+  </template>
+</div>
+</template>
 </template>
 
   <script>
@@ -75,24 +72,35 @@ height: 1000px;
             type: String,
             value: 'challenge-componente'
           },
-          description:{
-            type: String,
-          },
-          isDone:Boolean,
-        };
-      }
-      todo(){
-        description,
-        isDone
-      }
-      todos=this.todo;
-     addNewTodo() { //mètodo para agregar los todos
-    this.todos.push({ //hace push a nuestro arraw de todos
-      description: this.description, //ingresar un  nuevo objeto
-      isDone: false
-    });
-  }
-}
+          valor1: {
+                        type: String,
+                        value: '',
+                        notify: true
+                    },
+                    collection: {
+                        type: Array,
+                        notify: true
+                    },
+                    collection: Array
+                };
+            }
+
+            algo() {
+                var input = this.$.inputvalor;
+                var valor = this.$.inputvalor.value;
+                var codeObj = {
+                    descripcion: this.$.inputvalor.value
+                };
+                if (valor != '') {
+                    this.push("collection", codeObj);
+                    input.value = "";
+                }
+            }
+            borrar() {
+                alert("se supone deberia borrar xD");
+            }
+        }
+
     window.customElements.define(ChallengeComponente.is, ChallengeComponente);
   </script>
 </dom-module>
